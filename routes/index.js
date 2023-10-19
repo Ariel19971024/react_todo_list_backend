@@ -29,6 +29,18 @@ router
       res.status(404).send(e);
     }
   })
+  .post("/sort", async (req, res) => {
+    console.log(req.body);
+    List.find()
+      .sort({ [req.body.field]: req.body.sort })
+      .exec()
+      .then((data) => {
+        res.send({ status: "200", data, msg: "success" });
+      })
+      .catch((e) => {
+        res.status(400).send(e);
+      });
+  })
   .delete("/todo/:id", (req, res) => {
     //可以拆成Controller
     List.deleteOne({ id: req.params.id }).then((msg) => {
