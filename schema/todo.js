@@ -13,8 +13,10 @@ const listSchema = mongoose.Schema({
   },
   created_date: {
     type: Date,
-    required: true,
     trim: true,
+  },
+  priority: {
+      type: Number,
   },
 });
 
