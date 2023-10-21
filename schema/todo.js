@@ -1,8 +1,5 @@
-const mongoose = require("mongoose");
-mongoose
-  .connect("mongodb://localhost:27017/todo", {})
-  .then(() => console.log("DB connection successful!"));
-const listSchema = mongoose.Schema({
+const connection = require("../utils/db")
+const listSchema = connection.Schema({
   id: {
     type: String,
     required: true,
@@ -20,6 +17,6 @@ const listSchema = mongoose.Schema({
   },
 });
 
-const List = mongoose.model("List", listSchema);
+const List = connection.model("List", listSchema);
 
 module.exports = List;
